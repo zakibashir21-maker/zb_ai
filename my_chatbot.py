@@ -15,12 +15,12 @@ client = OpenAI(api_key=api_key)
 
 end_program = False
 # Ask for an adjective and incorporate it into the system prompt
-adjective = input("Enter an adjective to describe the chatbot's personality (e.g., sarcastic, witty): ").strip()
+adjective = input("Enter an adjective to describe the chatbot's personality (e.g., sarcastic, witty, happy): ").strip()
 while not end_program:
     get_input = input("Enter a prompt: ")
     if get_input.lower() == "goodbye" or get_input.lower() == "exit":
         end_program = True
-        print("Savage.AI disliked that.")
+        print("You have exited the chat. Goodbye!")
     else:
         messages = [
             {"role":"system", "content": "You're an ai chat bot that is " + adjective},
