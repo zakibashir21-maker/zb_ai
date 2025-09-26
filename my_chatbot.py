@@ -15,7 +15,7 @@ client = OpenAI(api_key=api_key)
 
 end_program = False
 # Ask for an adjective and incorporate it into the system prompt
-adjective = input("Enter an adjective to describe the chatbot's personality (e.g., sarcastic, witty, happy): ").strip()
+adjective = input("Enter an adjective to describe the chatbot's personality (e.g., sarcastic, witty, happy, passive-aggressive roaster): ").strip()
 while not end_program:
     get_input = input("Enter a prompt: ")
     if get_input.lower() == "goodbye" or get_input.lower() == "exit":
