@@ -11,7 +11,7 @@ with open(CREDENTIALS_FILE, "r") as f:
     api_key = f.read().strip()
 client = OpenAI(api_key=api_key)
 
-audioFiles = open("Recording.m4a", "rb")
+audioFiles = open("Joke.m4a", "rb")
 transcript = client.audio.transcriptions.create(
     model="whisper-1",
     file=audioFiles
