@@ -1,4 +1,4 @@
-# yes
+#my_chatbot.py
 import os
 from openai import OpenAI
 # Load API key from credentials file
@@ -9,9 +9,15 @@ if not os.path.exists(CREDENTIALS_FILE):
 
 with open(CREDENTIALS_FILE, "r") as f:
     api_key = f.read().strip()
-
-
 client = OpenAI(api_key=api_key)
+
+audioFiles = open("Recording.m4a", "rb")
+transcript = client.audio.transcriptions.create(
+    model="whisper-1",
+    file=audioFiles
+)
+prompt = transcript.text
+print(prompt)
 
 end_program = False
 # Ask for an adjective and incorporate it into the system prompt
