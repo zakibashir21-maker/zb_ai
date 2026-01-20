@@ -34,7 +34,7 @@ def record_until_enter(samplerate=16000, channels=1):
 
     if not frames:
         return None
-
+    # Save recorded data to a temporary WAV file
     data = np.concatenate(frames, axis=0)
     tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
     sf.write(tmp.name, data, samplerate)
@@ -56,7 +56,7 @@ while not end_program:
     if not audio_path:
         print("No audio captured. Try again.")
         continue
-
+    #Transcribe audio using OpenAI's Whisper model    
     with open(audio_path, "rb") as audio_file:
         transcript = client.audio.transcriptions.create(
             model="whisper-1",
@@ -73,7 +73,7 @@ while not end_program:
     os.remove(audio_path)
 
     messages = [
-        {"role": "system", "content": "You're an ai chat bot that is " + adjective},
+        {"role": "system", "content": "You are " + adjective},
         {"role": "user", "content": get_input}
     ]
     response = client.chat.completions.create(
